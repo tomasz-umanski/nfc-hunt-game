@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "379d904b-94ec-457a-bcbe-194cd4cfbf4a",
+		"name": "nfc-hunt-game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35034326"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.accessToken);",
+									"    console.log(\"Access token saved to collection variable: \" + jsonData.accessToken);",
+									"} else {",
+									"    console.log(\"Access token not found in response.\");",
+									"}",
+									"",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);",
+									"    console.log(\"Refresh token saved to collection variable: \" + jsonData.refreshToken);",
+									"} else {",
+									"    console.log(\"Refresh token not found in response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"password\": \"password\",\n  \"confirmPassword\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.accessToken);",
+									"    console.log(\"Access token saved to collection variable: \" + jsonData.accessToken);",
+									"} else {",
+									"    console.log(\"Access token not found in response.\");",
+									"}",
+									"",
+									"if (jsonData.refreshToken) {",
+									"    pm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);",
+									"    console.log(\"Refresh token saved to collection variable: \" + jsonData.refreshToken);",
+									"} else {",
+									"    console.log(\"Refresh token not found in response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.accessToken);",
+									"    console.log(\"Access token saved to collection variable: \" + jsonData.accessToken);",
+									"} else {",
+									"    console.log(\"Access token not found in response.\");",
+									"}",
+									"",
+									"if (jsonData.refreshToken) {",
+									"    pm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);",
+									"    console.log(\"Refresh token saved to collection variable: \" + jsonData.refreshToken);",
+									"} else {",
+									"    console.log(\"Refresh token not found in response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/refresh-token",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 204) {",
+									"    const variablesToClear = [\"access_token\", \"refresh_token\"];",
+									"",
+									"    variablesToClear.forEach(variable => pm.collectionVariables.unset(variable));",
+									"",
+									"    console.log(\"Variables cleared due to 204 response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout From All Devices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 204) {",
+									"    const variablesToClear = [\"access_token\", \"refresh_token\"];",
+									"",
+									"    variablesToClear.forEach(variable => pm.collectionVariables.unset(variable));",
+									"",
+									"    console.log(\"Variables cleared due to 204 response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/logout-from-all-devices",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout-from-all-devices"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "device_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
