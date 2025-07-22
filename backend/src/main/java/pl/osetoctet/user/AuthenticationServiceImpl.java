@@ -72,7 +72,7 @@ class AuthenticationServiceImpl implements AuthenticationService {
         User userToSave = userFactory.createFromRegisterDto(registerUserDto);
         try {
             User savedUser = userRepository.save(userToSave);
-            log.info("Saved new user in repository with email = {}", savedUser.getEmail());
+            log.info("Saved new user in repository with id = {}", savedUser.getId());
             return savedUser;
         } catch (Exception e) {
             log.error("Failed to save new user in repository", e);

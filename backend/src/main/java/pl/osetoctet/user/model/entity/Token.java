@@ -3,6 +3,8 @@ package pl.osetoctet.user.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.osetoctet.common.model.entity.BaseEntity;
 import pl.osetoctet.user.model.enums.TokenScheme;
 
@@ -37,6 +39,7 @@ public class Token extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
 }
