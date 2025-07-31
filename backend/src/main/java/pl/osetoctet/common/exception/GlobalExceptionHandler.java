@@ -37,8 +37,8 @@ public class GlobalExceptionHandler {
         List<String> errors = ex.getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
-        String errorMessage = String.join(", ", errors);
-        ErrorResponse errorResponse = createErrorResponse(HttpStatus.BAD_REQUEST, errorMessage, request);
+
+        ErrorResponse errorResponse = createErrorResponse(HttpStatus.BAD_REQUEST, errors, request);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -97,6 +97,19 @@ public class GlobalExceptionHandler {
                 OffsetDateTimeUtils.getCurrentUtcTimestamp(),
                 status.value(),
                 messageSource.getMessage(message, null, message, request.getLocale()),
+                request.getRequestURI()
+        );
+    }
+
+    private ErrorResponse createErrorResponse(HttpStatus status, List<String> messages, HttpServletRequest request) {
+        String errorMessage = messages.stream()
+                .map(message -> messageSource.getMessage(message, null, message, request.getLocale()))
+                .collect(Collectors.joining(", "));
+
+        return new ErrorResponse(
+                OffsetDateTimeUtils.getCurrentUtcTimestamp(),
+                status.value(),
+                errorMessage,
                 request.getRequestURI()
         );
     }

@@ -21,6 +21,18 @@ public enum Role {
                     USER_UPDATE,
                     USER_DELETE
             )
+    ),
+    ADMIN(
+            Set.of(
+                    USER_CREATE,
+                    USER_READ,
+                    USER_UPDATE,
+                    USER_DELETE,
+                    ADMIN_CREATE,
+                    ADMIN_READ,
+                    ADMIN_UPDATE,
+                    ADMIN_DELETE
+            )
     );
 
     private final Set<Permission> permissions;
