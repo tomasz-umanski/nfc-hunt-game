@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nfc-hunt-app
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:8080"
+    volumes:
+      - ${UPLOAD_LOCATION}:/app/uploads
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - nfc-hunt-network
+
+volumes:
+  uploads_data:
+
+networks:
+  nfc-hunt-network:
+    external: true
+    name: nfc-hunt-network

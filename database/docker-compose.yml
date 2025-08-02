@@ -7,8 +7,15 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - nfc-hunt-game-db:/var/lib/postgresql/data
+      - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - nfc-hunt-network
 
 volumes:
   nfc-hunt-game-db:
+
+networks:
+  nfc-hunt-network:
+    driver: bridge
+    name: nfc-hunt-network
