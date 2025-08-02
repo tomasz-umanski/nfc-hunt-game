@@ -21,7 +21,7 @@ public class TagLocationUnlockImage extends BaseEntity {
     @JoinColumn(name = "tag_location_id", nullable = false)
     private TagLocation tagLocation;
 
-    @Column(name = "image_filename", nullable = false)
+    @Column(name = "image_filename", nullable = false, length = 64)
     private String imageFilename;
 
     @Column(name = "display_order", nullable = false)

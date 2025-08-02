@@ -38,7 +38,7 @@ public class TagLocation extends BaseEntity {
     @Column(name = "unlocked_image_filename", nullable = false, length = 64)
     private String unlockedImageFilename;
 
-    @OneToMany(mappedBy = "tagLocation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tagLocation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderBy("displayOrder ASC")
     private List<TagLocationUnlockImage> unlockImages;
 

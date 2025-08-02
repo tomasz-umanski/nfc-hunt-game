@@ -1,6 +1,5 @@
 # Ignore environment variable files
 .env
-*.sql
 
 # Ignore Docker Compose override files (if any)
 docker-compose.override.yml
@@ -22,7 +21,6 @@ docker-compose.override.yml
 *.jar
 *.war
 *.ear
-application-local.properties
 
 # Maven
 target/
@@ -50,4 +48,4 @@ thumb
 sketch
 
 # Uploaded files
-/backend/public/
+uploads
