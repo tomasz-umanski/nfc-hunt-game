@@ -15,4 +15,6 @@ interface TagLocationRepository extends JpaRepository<TagLocation, UUID> {
 
     boolean existsByNfcTagUuid(String nfcTagUuid);
 
+    Optional<TagLocation> findByNfcTagUuid(String nfcTagUuid);
+
 }

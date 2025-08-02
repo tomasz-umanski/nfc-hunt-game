@@ -10,7 +10,7 @@ import pl.osetoctet.taglocation.model.dto.CreateTagLocationDto;
 import pl.osetoctet.taglocation.model.dto.TagLocationResponseDto;
 import pl.osetoctet.taglocation.model.dto.UpdateTagLocationDto;
 import pl.osetoctet.taglocation.model.entity.TagLocation;
-import pl.osetoctet.usertagaccess.UserTagAccessEntityService;
+import pl.osetoctet.tagaccess.TagAccessEntityService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import java.util.UUID;
 class TagLocationServiceImpl implements TagLocationService {
 
     private final TagLocationRepository tagLocationRepository;
-    private final UserTagAccessEntityService userTagAccessEntityService;
+    private final TagAccessEntityService tagAccessEntityService;
 
     @Override
     @Transactional()
@@ -102,8 +102,8 @@ class TagLocationServiceImpl implements TagLocationService {
         if (optionalTagLocation.isEmpty()) {
             throw new ValidationException("Tag location no longer exists");
         }
-        if (userTagAccessEntityService.isAccessedByAnyUser(id)) {
-            throw new ValidationException("Tag location is referenced by user access records and cannot be modified");
+        if (tagAccessEntityService.isAccessedByAnyUser(id)) {
+            throw new ValidationException("Tag location is referenced by user access records and cannot be deleted");
         }
         try {
             TagLocation tagLocationToDelete = optionalTagLocation.get();

@@ -504,7 +504,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"New Tag Location\",\n    \"description\": \"New description\",\n    \"nfcTagUuid\": \"6a8008d9-075f-4192-9f89-e2c6428e97c0\",\n    \"latitude\": 51.12345678,\n    \"longitude\": 17.12345678\n}",
@@ -533,7 +539,13 @@
 					"name": "Patch Tag Location By Id",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Patched Location\",\n    \"description\": \"Patched description\",\n    \"nfcTagUuid\": \"123123123-075f-4192-9f89as-e2c6428e97c0\",\n    \"latitude\": 52.12345678,\n    \"longitude\": 18.12345678\n}",
@@ -576,7 +588,13 @@
 					"name": "Get All Tag Locations",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}:{{port}}/api/v1/tag-location",
 							"host": [
@@ -596,7 +614,13 @@
 					"name": "Delete Tag Location By Id",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}:{{port}}/api/v1/tag-location/:tag_location_id",
 							"host": [
@@ -621,6 +645,117 @@
 									"key": "tag_location_id",
 									"value": "{{tag_location_id}}"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "tag access",
+			"item": [
+				{
+					"name": "Unlock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nfcTagUuid\": \"6a8008d9-075f-4192-9f89-e2c6428e97c0\",\n    \"latitude\": 51.12345678,\n    \"longitude\": 17.12345678\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-access/unlock",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"tag-access",
+								"unlock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tag Locations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-access",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"tag-access"
 							]
 						}
 					},
@@ -688,14 +823,6 @@
 			"key": "device_id",
 			"value": "",
 			"type": "string"
-		},
-		{
-			"key": "access_token",
-			"value": ""
-		},
-		{
-			"key": "refresh_token",
-			"value": ""
 		},
 		{
 			"key": "accept_language",
