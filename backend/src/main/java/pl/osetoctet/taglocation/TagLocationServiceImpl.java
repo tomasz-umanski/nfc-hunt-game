@@ -11,6 +11,7 @@ import pl.osetoctet.taglocation.model.dto.TagLocationResponseDto;
 import pl.osetoctet.taglocation.model.dto.UpdateTagLocationDto;
 import pl.osetoctet.taglocation.model.entity.TagLocation;
 import pl.osetoctet.tagaccess.TagAccessEntityService;
+import pl.osetoctet.taglocation.model.entity.TagLocationUnlockImage;
 
 import java.util.List;
 import java.util.Optional;
@@ -92,6 +93,23 @@ class TagLocationServiceImpl implements TagLocationService {
         }
         if (updateDto.getLongitude() != null) {
             existingTagLocation.setLongitude(updateDto.getLongitude());
+        }
+        if (updateDto.getLockedImageFilename() != null) {
+            existingTagLocation.setLockedImageFilename(updateDto.getLockedImageFilename());
+        }
+        if (updateDto.getUnlockedImageFilename() != null) {
+            existingTagLocation.setUnlockedImageFilename(updateDto.getUnlockedImageFilename());
+        }
+        if (updateDto.getUnlockImages() != null) {
+            List<TagLocationUnlockImage> existingUnlockImages = existingTagLocation.getUnlockImages();
+
+            existingUnlockImages.clear();
+
+            List<TagLocationUnlockImage> newUnlockImages = updateDto.getUnlockImages().stream()
+                    .map(unlockedImagesDto -> TagLocationFactory.createUnlockImageFromDto(unlockedImagesDto, existingTagLocation))
+                    .toList();
+
+            existingUnlockImages.addAll(newUnlockImages);
         }
     }
 

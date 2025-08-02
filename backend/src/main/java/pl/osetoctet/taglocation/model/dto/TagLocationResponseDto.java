@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -25,5 +26,14 @@ public class TagLocationResponseDto {
 
     @Schema(description = "Longitude coordinate of the tag location", example = "17.12345678")
     private BigDecimal longitude;
+
+    @Schema(description = "Filename of the image displayed when the tag location is in locked state", example = "760386df-c8b4-4846-ba95-3b8a54ed340e.jpg")
+    private String lockedImageFilename;
+
+    @Schema(description = "Filename of the image displayed when the tag location is in unlocked state", example = "760386df-c8b4-4846-ba95-3b8a54ed340e.jpg")
+    private String unlockedImageFilename;
+
+    @Schema(description = "List of images that can be unlocked at this tag location")
+    private List<TagLocationUnlockImageResponseDto> unlockImages;
 
 }

@@ -33,7 +33,7 @@ class TagAccessServiceImpl implements TagAccessService {
 
     @Override
     @Transactional
-    public void unlock(User user, UnlockTagRequestDto unlockTagRequestDto) {
+    public TagAccessResponseDto unlock(User user, UnlockTagRequestDto unlockTagRequestDto) {
         log.info("Attempting to unlock tag {} for user {}", unlockTagRequestDto.getNfcTagUuid(), user.getId());
 
         try {
@@ -54,6 +54,8 @@ class TagAccessServiceImpl implements TagAccessService {
             TagAccess savedAccess = tagAccessRepository.save(tagAccessToSave);
             log.info("Successfully unlocked tag {} for user {} with access id {}",
                     tagLocation.getNfcTagUuid(), user.getId(), savedAccess.getId());
+
+            return TagAccessFactory.createTagAccessResponseDetailsDto(tagLocation, true);
         } catch (ValidationException e) {
             log.warn("Validation failed while unlocking tag {} for user {}: {}",
                     unlockTagRequestDto.getNfcTagUuid(), user.getId(), e.getMessage());

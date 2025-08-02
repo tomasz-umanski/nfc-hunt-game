@@ -1,6 +1,7 @@
 package pl.osetoctet.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -24,20 +25,8 @@ import static pl.osetoctet.user.model.enums.Role.ADMIN;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private static final String[] WHITE_LIST_URL = {
-            "/api/v1/auth/**",
-            "/v2/api-docs",
-            "/v3/api-docs",
-            "/v3/api-docs/**",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui/**",
-            "/webjars/**",
-            "/swagger-ui.html",
-            "/error",
-    };
+    @Value("${app.upload.url-pattern}")
+    private String urlPattern;
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CorsConfigurationSource corsConfigurationSource;
@@ -50,7 +39,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(WHITE_LIST_URL).permitAll()
+                        .requestMatchers(getWhiteListUrl()).permitAll()
                         .requestMatchers(GET, "/api/v1/tag-location").hasRole(ADMIN.name())
                         .requestMatchers(POST, "/api/v1/tag-location").hasRole(ADMIN.name())
                         .requestMatchers(PATCH, "/api/v1/tag-location/**").hasRole(ADMIN.name())
@@ -65,6 +54,24 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    private String[] getWhiteListUrl() {
+        return new String[]{
+                "/api/v1/auth/**",
+                "/v2/api-docs",
+                "/v3/api-docs",
+                "/v3/api-docs/**",
+                "/swagger-resources",
+                "/swagger-resources/**",
+                "/configuration/ui",
+                "/configuration/security",
+                "/swagger-ui/**",
+                "/webjars/**",
+                "/swagger-ui.html",
+                "/error",
+                urlPattern
+        };
     }
 
 }

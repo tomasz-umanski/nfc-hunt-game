@@ -1,11 +1,13 @@
 package pl.osetoctet.taglocation.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -39,5 +41,21 @@ public class CreateTagLocationDto {
     @Digits(integer = 3, fraction = 8, message = "validation.longitude.precision")
     @Schema(description = "Longitude coordinate of the tag location", example = "17.12345678")
     private BigDecimal longitude;
+
+    @NotBlank(message = "validation.lockedImageFilename.required")
+    @Size(max = 64, message = "validation.lockedImageFilename.size")
+    @Schema(description = "Filename of the image displayed when the tag location is in locked state", example = "760386df-c8b4-4846-ba95-3b8a54ed340e.jpg")
+    private String lockedImageFilename;
+
+    @NotBlank(message = "validation.unlockedImageFilename.required")
+    @Size(max = 64, message = "validation.unlockedImageFilename.size")
+    @Schema(description = "Filename of the image displayed when the tag location is in unlocked state", example = "760386df-c8b4-4846-ba95-3b8a54ed340e.jpg")
+    private String unlockedImageFilename;
+
+    @Valid
+    @NotNull(message = "validation.unlockImages.required")
+    @NotEmpty(message = "validation.unlockImages.notEmpty")
+    @Schema(description = "List of images that can be unlocked at this tag location")
+    private List<CreateTagLocationUnlockImageDto> unlockImages;
 
 }

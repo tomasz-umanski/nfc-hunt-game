@@ -39,7 +39,11 @@ class TagAccessController {
                     )
             },
             responses = {
-                    @ApiResponse(responseCode = "204", description = "Unlocked tag access"),
+                    @ApiResponse(responseCode = "200", description = "Successfully unlocked tag",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = TagAccessResponseDto.class)
+                            )),
                     @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = ErrorResponse.class)
@@ -59,9 +63,9 @@ class TagAccessController {
             }
     )
     @PostMapping(value = "/unlock", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> unlock(@AuthenticationPrincipal User user, @Valid @RequestBody UnlockTagRequestDto unlockTagRequestDto) {
-        tagAccessService.unlock(user, unlockTagRequestDto);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<TagAccessResponseDto> unlock(@AuthenticationPrincipal User user, @Valid @RequestBody UnlockTagRequestDto unlockTagRequestDto) {
+        TagAccessResponseDto tagAccessResponseDto = tagAccessService.unlock(user, unlockTagRequestDto);
+        return ResponseEntity.ok(tagAccessResponseDto);
     }
 
     @Operation(operationId = "getAllTags", summary = "Get all tags with access-based information", tags = {"Tag access"},

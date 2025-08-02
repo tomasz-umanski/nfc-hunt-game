@@ -1,13 +1,12 @@
 package pl.osetoctet.taglocation.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import pl.osetoctet.common.model.entity.BaseEntity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +31,15 @@ public class TagLocation extends BaseEntity {
 
     @Column(name = "longitude", nullable = false, precision = 11, scale = 8)
     private BigDecimal longitude;
+
+    @Column(name = "locked_image_filename", nullable = false, length = 64)
+    private String lockedImageFilename;
+
+    @Column(name = "unlocked_image_filename", nullable = false, length = 64)
+    private String unlockedImageFilename;
+
+    @OneToMany(mappedBy = "tagLocation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("displayOrder ASC")
+    private List<TagLocationUnlockImage> unlockImages;
 
 }

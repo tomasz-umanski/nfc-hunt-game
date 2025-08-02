@@ -513,7 +513,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"New Tag Location\",\n    \"description\": \"New description\",\n    \"nfcTagUuid\": \"6a8008d9-075f-4192-9f89-e2c6428e97c0\",\n    \"latitude\": 51.12345678,\n    \"longitude\": 17.12345678\n}",
+							"raw": "{\n    \"name\": \"New Tag Location\",\n    \"description\": \"New description\",\n    \"nfcTagUuid\": \"6a8008d9-075f-4192-9f89-e2c6428e97c0\",\n    \"latitude\": 51.12345678,\n    \"longitude\": 17.12345678,\n    \"lockedImageFilename\": \"image1.jpg\",\n    \"unlockedImageFilename\": \"image2.jpg\",\n    \"unlockImages\": [\n        {\n            \"imageFilename\": \"image3.jpg\",\n            \"displayOrder\": 1\n        },\n        {\n            \"imageFilename\": \"image4.jpg\",\n            \"displayOrder\": 2\n        },\n        {\n            \"imageFilename\": \"image4.jpg\",\n            \"displayOrder\": 3\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -548,7 +548,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Patched Location\",\n    \"description\": \"Patched description\",\n    \"nfcTagUuid\": \"123123123-075f-4192-9f89as-e2c6428e97c0\",\n    \"latitude\": 52.12345678,\n    \"longitude\": 18.12345678\n}",
+							"raw": "{\n    \"name\": \"Patched Location\",\n    \"description\": \"Patched description\",\n    \"nfcTagUuid\": \"123123123-075f-4192-9f89as-e2c6428e97c0\",\n    \"latitude\": 52.12345678,\n    \"longitude\": 18.12345678,\n    \"lockedImageFilename\": \"image5.jpg\",\n    \"unlockedImageFilename\": \"image6.jpg\",\n    \"unlockImages\": [\n        {\n            \"imageFilename\": \"image7.jpg\",\n            \"displayOrder\": 1\n        },\n        {\n            \"imageFilename\": \"image8.jpg\",\n            \"displayOrder\": 2\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -794,6 +794,133 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "Upload Image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response",
+									"var jsonData = pm.response.json();",
+									"",
+									"// Check if the id exists in the response and save it into a collection variable",
+									"if (jsonData.fileUrl) {",
+									"    pm.collectionVariables.set(\"file_url\", jsonData.fileUrl);",
+									"    console.log(\"File url saved to collection variable: \" + jsonData.fileUrl);",
+									"} else {",
+									"    console.log(\"File url not found in response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efba2c4-93d8-42b0-a10c-dbe98e171770"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get File",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efba2c4-93d8-42b0-a10c-dbe98e171770"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/public/uploads/:file_url",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"public",
+								"uploads",
+								":file_url"
+							],
+							"variable": [
+								{
+									"key": "file_url",
+									"value": "{{file_url}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"event": [
@@ -831,6 +958,18 @@
 		},
 		{
 			"key": "tag_location_id",
+			"value": ""
+		},
+		{
+			"key": "file_url",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "refresh_token",
 			"value": ""
 		}
 	]

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TagAccessService {
 
-    void unlock(User user, UnlockTagRequestDto unlockTagRequestDto);
+    TagAccessResponseDto unlock(User user, UnlockTagRequestDto unlockTagRequestDto);
 
     List<TagAccessResponseDto> getAllTagsForUser(User user);
 
