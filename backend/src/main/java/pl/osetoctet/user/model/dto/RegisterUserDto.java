@@ -1,9 +1,7 @@
 package pl.osetoctet.user.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 import pl.osetoctet.user.validator.PasswordMatches;
@@ -29,6 +27,21 @@ public class RegisterUserDto {
     @Size(max = 100, message = "validation.confirmPassword.size")
     @Schema(description = "User's password confirmation", example = "strongpassword123")
     private String confirmPassword;
+
+    @NotNull(message = "validation.terms.gameRules.required")
+    @AssertTrue(message = "validation.terms.gameRules.required")
+    @Schema(description = "Acceptance of game rules and terms", example = "true")
+    private Boolean acceptGameRules;
+
+    @NotNull(message = "validation.terms.privacyPolicy.required")
+    @AssertTrue(message = "validation.terms.privacyPolicy.required")
+    @Schema(description = "Acceptance of privacy policy and data processing terms", example = "true")
+    private Boolean acceptPrivacyPolicy;
+
+    @NotNull(message = "validation.terms.ageConfirmation.required")
+    @AssertTrue(message = "validation.terms.ageConfirmation.required")
+    @Schema(description = "Confirmation that user is at least 16 years old", example = "true")
+    private Boolean confirmAge;
 
     public void trimFields() {
         this.email = (email != null) ? email.trim() : null;

@@ -18,7 +18,15 @@ export interface DecodedToken {
     jti: string;
 }
 
-
 export interface RefreshTokenOperationsDto {
     refreshToken: string;
+}
+
+export interface RegisterUserDto {
+    email: string;
+    password: string;
+    confirmPassword: string;
+    acceptGameRules: boolean;
+    acceptPrivacyPolicy: boolean;
+    confirmAge: boolean;
 }

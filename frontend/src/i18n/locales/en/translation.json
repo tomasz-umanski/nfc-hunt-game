@@ -4,7 +4,7 @@
   "email": "Email",
   "password": "Password",
   "login_loading": "Logging in...",
-  "login_success": "Logged in successfully!",
+  "login_success": "Logged in successfully",
   "login_error": "Error occurred during login",
   "validation.email.format": "Enter a valid email address",
   "validation.email.size": "Email must be less than 100 characters",
@@ -12,5 +12,17 @@
   "logout": "Logout",
   "logout_loading": "Logging out...",
   "logout_success": "Logged out successfully",
-  "logout_error": "Logout failed"
+  "logout_error": "Logout failed",
+  "register": "Register",
+  "register_loading": "Registering...",
+  "register_success": "Registration successful",
+  "register_error": "Error occurred during registration",
+  "confirmPassword": "Confirm Password",
+  "validation.confirmPassword.size": "Confirm Password must be less than 100 characters",
+  "validation.passwords.match": "Passwords do not match",
+  "already_have_account": "Already have an account?",
+  "no_account": "Don't have an account?",
+  "acceptGameRules": "I have read and accept the <termsLink>terms of service</termsLink>.",
+  "acceptPrivacyPolicy": "I have read and accept the <privacyLink>privacy policy</privacyLink>.",
+  "confirmAge": "I declare that I am over 16 years old."
 }

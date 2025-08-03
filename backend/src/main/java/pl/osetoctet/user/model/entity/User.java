@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import pl.osetoctet.common.model.entity.BaseEntity;
 import pl.osetoctet.user.model.enums.Role;
 
+import java.time.OffsetDateTime;
 import java.util.Collection;
 
 @Getter
@@ -29,6 +30,15 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 20)
     private Role role = Role.USER;
+
+    @Column(name = "game_rules_accepted_at", nullable = false)
+    private OffsetDateTime gameRulesAcceptedAt;
+
+    @Column(name = "privacy_policy_accepted_at", nullable = false)
+    private OffsetDateTime privacyPolicyAcceptedAt;
+
+    @Column(name = "age_confirmed_at", nullable = false)
+    private OffsetDateTime ageConfirmedAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

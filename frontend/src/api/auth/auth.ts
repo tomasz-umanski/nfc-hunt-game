@@ -1,4 +1,9 @@
-import type {AuthenticateUserDto, AuthenticationResponse, RefreshTokenOperationsDto} from "@/types/auth";
+import type {
+    AuthenticateUserDto,
+    AuthenticationResponse,
+    RefreshTokenOperationsDto,
+    RegisterUserDto
+} from "@/types/auth";
 import apiClient from "@/api/apiClient.ts";
 
 export const loginRequest = async (
@@ -8,7 +13,6 @@ export const loginRequest = async (
         '/v1/auth/authenticate',
         data
     );
-
     return response.data;
 };
 
@@ -17,4 +21,12 @@ export const logoutRequest = async (data: RefreshTokenOperationsDto): Promise<vo
         "/v1/auth/logout",
         data
     );
+};
+
+export const registerRequest = async (data: RegisterUserDto): Promise<AuthenticationResponse> => {
+    const response = await apiClient.post<AuthenticationResponse>(
+        '/v1/auth/register',
+        data
+    );
+    return response.data;
 };

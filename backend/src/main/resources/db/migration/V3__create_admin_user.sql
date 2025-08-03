@@ -3,10 +3,16 @@ INSERT INTO users (id,
                    password,
                    role,
                    creation_timestamp,
-                   update_timestamp)
+                   update_timestamp,
+                   age_confirmed_at,
+                   privacy_policy_accepted_at,
+                   game_rules_accepted_at)
 VALUES ('${admin.user.id}',
         '${admin.user.email}',
         '${admin.user.password}',
         'ADMIN',
+        NOW(),
+        NOW(),
+        NOW(),
         NOW(),
         NOW());

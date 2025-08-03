@@ -53,7 +53,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"password\": \"password\",\n  \"confirmPassword\": \"password\"\n}",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"password\": \"password\",\n  \"confirmPassword\": \"password\",\n  \"acceptGameRules\": true,\n  \"acceptPrivacyPolicy\": true,\n  \"confirmAge\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -323,6 +323,95 @@
 								"v1",
 								"auth",
 								"logout-from-all-devices"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "auth (admin)",
+			"item": [
+				{
+					"name": "Authenticate User (admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.accessToken);",
+									"    console.log(\"Access token saved to collection variable: \" + jsonData.accessToken);",
+									"} else {",
+									"    console.log(\"Access token not found in response.\");",
+									"}",
+									"",
+									"if (jsonData.refreshToken) {",
+									"    pm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);",
+									"    console.log(\"Refresh token saved to collection variable: \" + jsonData.refreshToken);",
+									"} else {",
+									"    console.log(\"Refresh token not found in response.\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/auth/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
 							]
 						}
 					},
@@ -823,7 +912,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -856,7 +951,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [

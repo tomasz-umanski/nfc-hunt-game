@@ -12,5 +12,17 @@
   "logout": "Wyloguj się",
   "logout_loading": "Wylogowywanie...",
   "logout_success": "Wylogowano pomyślnie",
-  "logout_error": "Wystąpił błąd podczas wylogowywania"
+  "logout_error": "Wystąpił błąd podczas wylogowywania",
+  "register": "Zarejestruj się",
+  "register_loading": "Rejestracja...",
+  "register_success": "Zarejestrowano pomyślnie",
+  "register_error": "Wystąpił błąd podczas rejestracji",
+  "confirmPassword": "Potwierdź hasło",
+  "validation.confirmPassword.size": "Potwierdzenie hasła musi mieć mniej niż 100 znaków",
+  "validation.passwords.match": "Hasła się nie zgadzają",
+  "already_have_account": "Masz już konto?",
+  "no_account": "Nie masz konta?",
+  "acceptGameRules": "Zapoznałem(-am) się z <termsLink>regulaminem gry</termsLink> i akceptuję jego warunki.",
+  "acceptPrivacyPolicy": "Zapoznałem(-am) się z <privacyLink>polityką prywatności</privacyLink> i akceptuję zasady przetwarzania danych osobowych.",
+  "confirmAge": "Oświadczam, że mam ukończone 16 lat."
 }
