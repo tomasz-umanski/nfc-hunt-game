@@ -1,0 +1,16 @@
+{
+  "welcome": "Witamy na stronie głównej!",
+  "login": "Zaloguj się",
+  "email": "Email",
+  "password": "Hasło",
+  "login_loading": "Logowanie...",
+  "login_success": "Zalogowano pomyślnie",
+  "login_error": "Wystąpił błąd podczas logowania",
+  "validation.email.format": "Wprowadź poprawny adres email",
+  "validation.email.size": "Email musi mieć mniej niż 100 znaków",
+  "validation.password.size": "Hasło musi mieć od 8 do 100 znaków",
+  "logout": "Wyloguj się",
+  "logout_loading": "Wylogowywanie...",
+  "logout_success": "Wylogowano pomyślnie",
+  "logout_error": "Wystąpił błąd podczas wylogowywania"
+}

@@ -41,7 +41,7 @@ public class ApplicationConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(@NonNull HttpServletRequest request) {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type", "Accept-Language"));
+        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type", "Accept-Language", "Device-Id"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE"));
         corsConfiguration.setExposedHeaders(List.of("Authorization", "Access-Control-Allow-Origin"));
         corsConfiguration.setAllowedOriginPatterns(List.of(frontendUrl));

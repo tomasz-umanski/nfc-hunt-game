@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome to the homepage!",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "login_loading": "Logging in...",
+  "login_success": "Logged in successfully!",
+  "login_error": "Error occurred during login",
+  "validation.email.format": "Enter a valid email address",
+  "validation.email.size": "Email must be less than 100 characters",
+  "validation.password.size": "Password must be between 8 and 100 characters",
+  "logout": "Logout",
+  "logout_loading": "Logging out...",
+  "logout_success": "Logged out successfully",
+  "logout_error": "Logout failed"
+}
