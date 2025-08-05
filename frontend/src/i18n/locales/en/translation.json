@@ -24,5 +24,21 @@
   "no_account": "Don't have an account?",
   "acceptGameRules": "I have read and accept the <termsLink>terms of service</termsLink>.",
   "acceptPrivacyPolicy": "I have read and accept the <privacyLink>privacy policy</privacyLink>.",
-  "confirmAge": "I declare that I am over 16 years old."
+  "confirmAge": "I declare that I am over 16 years old.",
+  "home": "Home page",
+  "account_settings": "Account settings",
+  "current_password": "Current Password",
+  "new_password": "New Password",
+  "confirm_new_password": "Confirm New Password",
+  "change_password": "Change Password",
+  "delete_account": "Delete Account",
+  "delete_account_confirm": "Are you sure you want to delete your account? All data related to this account will be removed. This cannot be undone.",
+  "password_change_loading": "Changing password...",
+  "password_change_success": "Password changed successfully!",
+  "password_change_error": "Failed to change password.",
+  "account_deletion_loading": "Deleting account...",
+  "account_deletion_success": "Account deleted successfully.",
+  "account_deletion_error": "Failed to delete account.",
+  "validation.currentPassword.required": "Current password is required",
+  "cancel": "Cancel"
 }

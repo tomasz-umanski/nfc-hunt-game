@@ -11,7 +11,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import HamburgerMenu from "@/components/layout/HamburgerMenu.tsx"; // import icons
 
 const schema = z.object({
-    email: z.string().email('validation.email.format').max(100, 'validation.email.size'),
+    email: z.email('validation.email.format').max(100, 'validation.email.size'),
     password: z.string().min(8, 'validation.password.size').max(100, 'validation.password.size'),
 });
 

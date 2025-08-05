@@ -72,7 +72,7 @@ export default function HamburgerMenu() {
 
                 {open && (
                     <div
-                        className="absolute right-0 mt-2 p-4 bg-white shadow-lg rounded-lg flex flex-col gap-3 min-w-[140px]">
+                        className="absolute right-0 mt-2 p-4 bg-white shadow-lg rounded-lg flex flex-col gap-3 min-w-[180px]">
                         <button
                             onClick={toggleLang}
                             className="flex items-center gap-2 text-sm hover:underline text-left"
@@ -80,22 +80,49 @@ export default function HamburgerMenu() {
                             <Globe size={16}/>
                             {i18n.language.toUpperCase()}
                         </button>
+                        <Link
+                            to="/"
+                            className="text-sm hover:underline text-left"
+                            onClick={() => setOpen(false)}
+                        >
+                            {t('home')}
+                        </Link>
 
                         {isAuthenticated() ? (
-                            <button
-                                onClick={handleLogout}
-                                className="text-sm hover:underline text-left"
-                            >
-                                {t('logout')}
-                            </button>
+                            <div className="flex flex-col gap-3">
+                                <Link
+                                    to="/account-settings"
+                                    className="text-sm hover:underline text-left"
+                                    onClick={() => setOpen(false)}
+                                >
+                                    {t('account_settings')}
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="text-sm hover:underline text-left"
+                                >
+                                    {t('logout')}
+                                </button>
+                            </div>
                         ) : (
-                            <Link
-                                to="/login"
-                                className="text-sm hover:underline text-left"
-                                onClick={() => setOpen(false)}
-                            >
-                                {t('login')}
-                            </Link>
+                            <div className="flex flex-col gap-3">
+                                <Link
+                                    to="/login"
+                                    className="text-sm hover:underline text-left"
+                                    onClick={() => setOpen(false)}
+                                >
+                                    {t('login')}
+                                </Link>
+                                <Link
+                                    to="/register"
+                                    className="text-sm hover:underline text-left"
+                                    onClick={() => setOpen(false)}
+                                >
+                                    {t('register')}
+                                </Link>
+                            </div>
+
+
                         )}
                     </div>
                 )}

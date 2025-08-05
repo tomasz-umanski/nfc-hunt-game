@@ -5,6 +5,8 @@ import PublicRoute from "@/routes/PublicRoute.tsx";
 import RegisterPage from "@/pages/RegisterPage.tsx";
 import PrivacyPage from "@/pages/PrivacyPage.tsx";
 import TermsPage from "@/pages/TermsPage.tsx";
+import ProtectedRoute from "@/routes/ProtectedRoute.tsx";
+import AccountSettingsPage from "@/pages/AccountSettingsPage.tsx";
 
 export default function AppRouter() {
     return (
@@ -17,6 +19,10 @@ export default function AppRouter() {
                 <Route element={<PublicRoute/>}>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
+                </Route>
+
+                <Route element={<ProtectedRoute/>}>
+                    <Route path="/account-settings" element={<AccountSettingsPage/>}/>
                 </Route>
 
                 <Route path="*" element={<Navigate to="/" replace/>}/>
