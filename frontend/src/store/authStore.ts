@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {decodeToken, isTokenExpired} from '@/utils/authUtils';
+import {decodeToken} from '@/utils/authUtils';
 import type {AuthenticationResponse, DecodedToken} from '@/types/auth';
 
 interface AuthState {
@@ -10,23 +10,10 @@ interface AuthState {
     logout: () => void;
 }
 
-const accessToken = localStorage.getItem('accessToken');
-const refreshToken = localStorage.getItem('refreshToken');
-
-let user: DecodedToken | null = null;
-if (accessToken && refreshToken && !isTokenExpired(refreshToken)) {
-    try {
-        user = decodeToken(accessToken);
-    } catch {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-    }
-}
-
 export const useAuthStore = create<AuthState>((set) => ({
-    user,
-    accessToken,
-    refreshToken,
+    user: null,
+    accessToken: null,
+    refreshToken: null,
     login: (auth) => {
         const decoded = decodeToken(auth.accessToken);
         set({

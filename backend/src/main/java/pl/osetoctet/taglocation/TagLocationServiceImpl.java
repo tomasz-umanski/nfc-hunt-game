@@ -45,14 +45,14 @@ class TagLocationServiceImpl implements TagLocationService {
 
     @Override
     public List<TagLocationResponseDto> getAll() {
-        return tagLocationRepository.findAllByOrderByNameAsc().stream()
+        return tagLocationRepository.findAllWithUnlockImagesOrderByNameAsc().stream()
                 .map(TagLocationFactory::createFromTagLocation)
                 .toList();
     }
 
     @Override
     public TagLocationResponseDto updateById(UUID id, UpdateTagLocationDto updateTagLocationDto) {
-        Optional<TagLocation> optionalTagLocation = tagLocationRepository.findActiveById(id);
+        Optional<TagLocation> optionalTagLocation = tagLocationRepository.findActiveByIdWithUnlockImages(id);
 
         if (optionalTagLocation.isEmpty()) {
             throw new ValidationException("validation.tagLocation.notFound");
@@ -116,7 +116,7 @@ class TagLocationServiceImpl implements TagLocationService {
     @Override
     @Transactional
     public void deleteById(UUID id) {
-        Optional<TagLocation> optionalTagLocation = tagLocationRepository.findActiveById(id);
+        Optional<TagLocation> optionalTagLocation = tagLocationRepository.findActiveByIdWithUnlockImages(id);
         if (optionalTagLocation.isEmpty()) {
             throw new ValidationException("Tag location no longer exists");
         }

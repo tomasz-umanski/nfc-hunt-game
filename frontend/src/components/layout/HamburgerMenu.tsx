@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {Link, useNavigate} from 'react-router-dom';
 import {Globe} from 'lucide-react';
 import {useAuthStore} from '@/store/authStore';
-import {isAuthenticated} from '@/utils/authUtils';
+import {hasAdminRole, isAuthenticated} from '@/utils/authUtils';
 import {logoutRequest} from "@/api/auth/auth.ts";
 import toast from "react-hot-toast";
 
@@ -29,14 +29,23 @@ export default function HamburgerMenu() {
             return;
         }
 
-        await toast.promise(
-            logoutRequest({refreshToken}),
-            {
-                loading: t('logout_loading'),
-                success: t('logout_success'),
-                error: (err: any) => err?.response?.data?.error || t('logout_error'),
+        try {
+            await toast.promise(
+                logoutRequest({refreshToken}),
+                {
+                    loading: t('logout_loading'),
+                    success: t('logout_success'),
+                    error: (err: any) => err?.response?.data?.error || t('logout_error'),
+                }
+            );
+        } catch (err: any) {
+            if (err?.response?.status === 401) {
+                logout();
+                setOpen(false);
+                navigate('/');
+                return;
             }
-        );
+        }
 
         logout();
         setOpen(false);
@@ -88,6 +97,15 @@ export default function HamburgerMenu() {
                             {t('home')}
                         </Link>
 
+                        {hasAdminRole() && (
+                            <Link
+                                to="/admin"
+                                className="text-sm hover:underline text-left"
+                                onClick={() => setOpen(false)}
+                            >
+                                {t('admin_panel')}
+                            </Link>
+                        )}
                         {isAuthenticated() ? (
                             <div className="flex flex-col gap-3">
                                 <Link
@@ -121,8 +139,6 @@ export default function HamburgerMenu() {
                                     {t('register')}
                                 </Link>
                             </div>
-
-
                         )}
                     </div>
                 )}

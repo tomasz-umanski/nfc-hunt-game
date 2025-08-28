@@ -6,10 +6,13 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.osetoctet.common.model.entity.BaseEntity;
+import pl.osetoctet.tagaccess.model.entity.TagAccess;
 import pl.osetoctet.user.model.enums.Role;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,6 +42,10 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "age_confirmed_at", nullable = false)
     private OffsetDateTime ageConfirmedAt;
+
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TagAccess> tagAccesses = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

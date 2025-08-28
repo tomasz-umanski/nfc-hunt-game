@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
-import { loginRequest } from '@/api/auth/auth.ts';
+import {useTranslation} from 'react-i18next';
+import {Link, useNavigate} from 'react-router-dom';
+import {useAuthStore} from '../store/authStore';
+import {loginRequest} from '@/api/auth/auth.ts';
 import toast from 'react-hot-toast';
-import { Eye, EyeOff } from 'lucide-react';
-import HamburgerMenu from "@/components/layout/HamburgerMenu.tsx"; // import icons
+import {Eye, EyeOff} from 'lucide-react';
+import HamburgerMenu from "@/components/layout/HamburgerMenu.tsx";
 
 const schema = z.object({
     email: z.email('validation.email.format').max(100, 'validation.email.size'),
@@ -18,12 +18,12 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function LoginPage() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<FormData>({ resolver: zodResolver(schema) });
+        formState: {errors, isSubmitting},
+    } = useForm<FormData>({resolver: zodResolver(schema)});
 
     const login = useAuthStore((state) => state.login);
     const navigate = useNavigate();
@@ -87,7 +87,7 @@ export default function LoginPage() {
                         tabIndex={-1}
                         aria-label={showPassword ? t('hide_password') : t('show_password')}
                     >
-                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                     </button>
                     {errors.password && (
                         <p className="text-sm text-red-500 mt-1">{t(errors.password.message!)}</p>

@@ -7,6 +7,10 @@ import PrivacyPage from "@/pages/PrivacyPage.tsx";
 import TermsPage from "@/pages/TermsPage.tsx";
 import ProtectedRoute from "@/routes/ProtectedRoute.tsx";
 import AccountSettingsPage from "@/pages/AccountSettingsPage.tsx";
+import AdminPage from "@/pages/AdminPage.tsx";
+import RoleBasedRoute from "@/routes/RoleBasedRoute.tsx";
+import UserManagement from "@/pages/UserManagement.tsx";
+import TagsManagement from "@/pages/TagsManagement.tsx";
 
 export default function AppRouter() {
     return (
@@ -23,6 +27,14 @@ export default function AppRouter() {
 
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/account-settings" element={<AccountSettingsPage/>}/>
+                </Route>
+
+                <Route path="/admin" element={<RoleBasedRoute allowedRoles={['ADMIN']}/>}>
+                    <Route element={<AdminPage/>}>
+                        <Route index element={<Navigate to="/admin/users" replace/>}/>
+                        <Route path="users" element={<UserManagement/>}/>
+                        <Route path="tags" element={<TagsManagement/>}/>
+                    </Route>
                 </Route>
 
                 <Route path="*" element={<Navigate to="/" replace/>}/>

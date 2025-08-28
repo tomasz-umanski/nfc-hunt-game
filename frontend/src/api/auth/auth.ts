@@ -30,3 +30,11 @@ export const registerRequest = async (data: RegisterUserDto): Promise<Authentica
     );
     return response.data;
 };
+
+export const refreshTokenRequest = async (data: RefreshTokenOperationsDto): Promise<AuthenticationResponse> => {
+    const response = await apiClient.post<AuthenticationResponse>(
+        '/v1/auth/refresh-token',
+        data
+    );
+    return response.data;
+};

@@ -9,6 +9,8 @@ import pl.osetoctet.common.model.entity.BaseEntity;
 import pl.osetoctet.taglocation.model.entity.TagLocation;
 import pl.osetoctet.user.model.entity.User;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -26,5 +28,11 @@ public class TagAccess extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tag_location_id", nullable = false)
     private TagLocation tagLocation;
+
+    @Column(name = "latitude", nullable = false, precision = 10, scale = 8)
+    private BigDecimal latitude;
+
+    @Column(name = "longitude", nullable = false, precision = 11, scale = 8)
+    private BigDecimal longitude;
 
 }

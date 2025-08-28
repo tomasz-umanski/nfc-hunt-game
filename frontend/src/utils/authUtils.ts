@@ -1,7 +1,9 @@
 import {jwtDecode} from 'jwt-decode';
-import type {DecodedToken} from "@/types/auth";
+import type {AuthenticationResponse, DecodedToken, RefreshTokenOperationsDto} from "@/types/auth";
 import {v4} from 'uuid';
 import {useAuthStore} from "@/store/authStore.ts";
+import {refreshTokenRequest} from "@/api/auth/auth.ts";
+import type {RoleBasedRouteProps} from "@/routes/RoleBasedRoute.tsx";
 
 export const decodeToken = (token: string): DecodedToken => jwtDecode(token);
 
@@ -30,8 +32,26 @@ export const getLanguageHeader = (): string => {
 };
 
 export const isAuthenticated = (): boolean => {
-    const {accessToken} = useAuthStore.getState();
+    const accessToken = localStorage.getItem('accessToken');
     return accessToken != null;
+};
+
+export const hasAdminRole = (): boolean => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken == null)
+        return false;
+
+    const user = decodeToken(accessToken);
+    return user.role === "ADMIN";
+};
+
+export const hasAllowedRole = ({allowedRoles}: RoleBasedRouteProps): boolean => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken == null)
+        return false;
+
+    const user = decodeToken(accessToken);
+    return allowedRoles.includes(user.role);
 };
 
 export const isTokenExpired = (token: string): boolean => {
@@ -41,5 +61,30 @@ export const isTokenExpired = (token: string): boolean => {
         return decoded.exp < now;
     } catch {
         return true;
+    }
+};
+
+export const initAuth = async () => {
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    const {login, logout} = useAuthStore.getState();
+
+    if (!refreshToken || isTokenExpired(refreshToken)) {
+        logout();
+        return;
+    }
+
+    try {
+        if (accessToken && !isTokenExpired(accessToken)) {
+            login({accessToken, refreshToken});
+            return;
+        }
+
+        const body: RefreshTokenOperationsDto = {refreshToken};
+        const response: AuthenticationResponse = await refreshTokenRequest(body);
+        login(response);
+    } catch (err) {
+        logout();
     }
 };

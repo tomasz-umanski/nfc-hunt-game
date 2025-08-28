@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 class TagAccessFactory {
 
-    public static TagAccessResponseDto createTagAccessResponseDetailsDto(TagLocation tagLocation,  boolean isUnlocked) {
+    public static TagAccessResponseDto createTagAccessResponseDetailsDto(TagLocation tagLocation, boolean isUnlocked) {
         TagAccessResponseDto.TagAccessResponseDtoBuilder builder = TagAccessResponseDto.builder()
                 .longitude(tagLocation.getLongitude())
                 .latitude(tagLocation.getLatitude())
@@ -51,6 +51,8 @@ class TagAccessFactory {
         return TagAccess.builder()
                 .user(user)
                 .tagLocation(tagLocation)
+                .longitude(tagLocation.getLongitude())
+                .latitude(tagLocation.getLatitude())
                 .build();
     }
 
