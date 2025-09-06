@@ -118,10 +118,10 @@ class TagLocationServiceImpl implements TagLocationService {
     public void deleteById(UUID id) {
         Optional<TagLocation> optionalTagLocation = tagLocationRepository.findActiveByIdWithUnlockImages(id);
         if (optionalTagLocation.isEmpty()) {
-            throw new ValidationException("Tag location no longer exists");
+            throw new ValidationException("validation.tagLocation.doesNotExist");
         }
         if (tagAccessEntityService.isAccessedByAnyUser(id)) {
-            throw new ValidationException("Tag location is referenced by user access records and cannot be deleted");
+            throw new ValidationException("validation.tagLocation.alreadyUnlocked");
         }
         try {
             TagLocation tagLocationToDelete = optionalTagLocation.get();

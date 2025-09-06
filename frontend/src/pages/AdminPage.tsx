@@ -1,6 +1,6 @@
 import {NavLink, Outlet} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
-import {Users, Tag} from 'lucide-react';
+import {Users, Nfc} from 'lucide-react';
 import HamburgerMenu from '@/components/layout/HamburgerMenu';
 
 export default function AdminPage() {
@@ -15,7 +15,7 @@ export default function AdminPage() {
         {
             to: 'tags',
             label: t('tags_management'),
-            icon: <Tag size={16} className="mr-2"/>,
+            icon: <Nfc size={16} className="mr-2"/>,
         },
     ];
 

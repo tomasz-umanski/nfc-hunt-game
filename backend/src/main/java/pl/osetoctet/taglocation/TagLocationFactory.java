@@ -49,6 +49,7 @@ class TagLocationFactory {
         return TagLocationResponseDto.builder()
                 .id(tagLocation.getId().toString())
                 .name(tagLocation.getName())
+                .nfcTagUuid(tagLocation.getNfcTagUuid())
                 .description(tagLocation.getDescription())
                 .latitude(tagLocation.getLatitude())
                 .longitude(tagLocation.getLongitude())

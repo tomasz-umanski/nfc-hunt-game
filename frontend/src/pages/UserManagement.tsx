@@ -8,7 +8,7 @@ import {
     Mail,
     MapPin,
     Calendar,
-    User
+    User, ExternalLink
 } from 'lucide-react';
 
 import {getUserSummaryRequest} from '@/api/userSummary/userSummary.ts';
@@ -153,7 +153,7 @@ export default function UserManagement() {
                                             {t('accessed_tags')}: {user.accessedTagsCount}
                                         </p>
                                     </div>
-                                    {isOpen ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
+                                    {isOpen ? <ChevronUp size={16}/> : <ChevronDown size={16}/>}
                                 </div>
 
                                 {isOpen && (
@@ -169,10 +169,23 @@ export default function UserManagement() {
                                                 <p className="font-semibold mb-1">{t('tags')}:</p>
                                                 <ul className="ml-4 list-disc space-y-1">
                                                     {user.userAccessedTagDtoList.map((tag, index) => (
+
                                                         <li key={index} className="text-gray-700">
-                                                            <MapPin size={14} className="inline-block mr-1"/>
-                                                            {tag.name} — {tag.latitude.toFixed(4)}, {tag.longitude.toFixed(4)} (
-                                                            {formatDate(tag.unlockedAt)})
+                                                            <p>
+                                                                <MapPin size={14} className="inline-block mr-1"/>
+                                                                {tag.latitude.toFixed(6)}, {tag.longitude.toFixed(6)}
+                                                                <button
+                                                                    onClick={() => window.open(`https://maps.google.com?q=${tag.latitude},${tag.longitude}`, '_blank')}
+                                                                    className="ml-2 text-blue-600 hover:text-blue-800"
+                                                                    title={t('view_on_map') || 'View on map'}
+                                                                >
+                                                                    <ExternalLink size={12} className="inline"/>
+                                                                </button>
+                                                            </p>
+                                                            <p>
+                                                                <Calendar size={14} className="inline-block mr-1"/>
+                                                                {formatDate(tag.unlockedAt)}
+                                                            </p>
                                                         </li>
                                                     ))}
                                                 </ul>

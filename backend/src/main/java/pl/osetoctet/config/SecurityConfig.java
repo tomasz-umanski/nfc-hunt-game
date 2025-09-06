@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(DELETE, "/api/v1/tag-location/**").hasRole(ADMIN.name())
                         .requestMatchers(GET, "/api/v1/user-summary").hasRole(ADMIN.name())
                         .requestMatchers(GET, "/api/v1/tag-access").permitAll()
+                        .requestMatchers(POST, "/api/v1/upload").hasRole(ADMIN.name())
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(handling -> handling

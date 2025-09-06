@@ -1,8 +1,6 @@
 import {jwtDecode} from 'jwt-decode';
-import type {AuthenticationResponse, DecodedToken, RefreshTokenOperationsDto} from "@/types/auth";
+import type {DecodedToken} from "@/types/auth";
 import {v4} from 'uuid';
-import {useAuthStore} from "@/store/authStore.ts";
-import {refreshTokenRequest} from "@/api/auth/auth.ts";
 import type {RoleBasedRouteProps} from "@/routes/RoleBasedRoute.tsx";
 
 export const decodeToken = (token: string): DecodedToken => jwtDecode(token);
@@ -61,30 +59,5 @@ export const isTokenExpired = (token: string): boolean => {
         return decoded.exp < now;
     } catch {
         return true;
-    }
-};
-
-export const initAuth = async () => {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    const {login, logout} = useAuthStore.getState();
-
-    if (!refreshToken || isTokenExpired(refreshToken)) {
-        logout();
-        return;
-    }
-
-    try {
-        if (accessToken && !isTokenExpired(accessToken)) {
-            login({accessToken, refreshToken});
-            return;
-        }
-
-        const body: RefreshTokenOperationsDto = {refreshToken};
-        const response: AuthenticationResponse = await refreshTokenRequest(body);
-        login(response);
-    } catch (err) {
-        logout();
     }
 };

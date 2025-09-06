@@ -21,6 +21,9 @@ public class TagLocationResponseDto {
     @Schema(description = "Detailed description of the tag location", example = "NFC tag located at the main entrance of the building, next to the reception desk")
     private String description;
 
+    @Schema(description = "Unique identifier of the NFC tag", example = "6a8008d9-075f-4192-9f89-e2c6428e97c0")
+    private String nfcTagUuid;
+
     @Schema(description = "Latitude coordinate of the tag location", example = "51.12345678")
     private BigDecimal latitude;
 
