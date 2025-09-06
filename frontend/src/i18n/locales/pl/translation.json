@@ -124,5 +124,149 @@
     "unlock_images_min": "Wymagany jest co najmniej jeden obraz odblokowujący",
     "display_order_min": "Kolejność wyświetlania musi wynosić co najmniej 1",
     "display_order_max": "Kolejność wyświetlania może wynosić maksymalnie 50"
+  },
+  "terms": {
+    "title": "Regulamin",
+    "subtitle": "Regulamin gry miejskiej",
+
+    "section1": {
+      "title": "§1 Postanowienia ogólne",
+      "point1": "Organizatorem gry miejskiej (dalej: „Gra\") jest zespół muzyczny działający pod nazwą „Oset\", reprezentowany przez Bartłomieja Leśniewskiego, adres e-mail: kontakt@oset-oktet.pl (dalej: „Organizator\").",
+      "point2": "Gra odbywa się na terenie miasta Gdańsk w okresie określonym w aplikacji od daty rozpoczęcia do daty zakończenia.",
+      "point3": "Gra ma charakter promocyjny i ma na celu zachęcenie uczestników do udziału w wydarzeniu artystycznym organizowanym przez zespół.",
+      "point4": "Udział w Grze jest dobrowolny i bezpłatny."
+    },
+
+    "section2": {
+      "title": "§2 Uczestnicy",
+      "point1": "Uczestnikiem Gry może być wyłącznie osoba fizyczna, która w dniu rozpoczęcia udziału ukończyła 16 lat. Osoby poniżej 16 roku życia nie mogą brać udziału w Grze.",
+      "point2": "Warunkiem udziału jest rejestracja w aplikacji internetowej oraz akceptacja niniejszego Regulaminu i Polityki Prywatności.",
+      "point3": "Każdy uczestnik może wziąć udział w Grze tylko raz i może otrzymać tylko jedną nagrodę."
+    },
+
+    "section3": {
+      "title": "§3 Zasady gry",
+      "point1": "Uczestnik skanuje tagi NFC rozmieszczone w różnych lokalizacjach na terenie miasta Gdańsk. Każdy tag odpowiada jednej lokalizacji.",
+      "point2": "Po zeskanowaniu tagu uczestnik rejestruje obecność w danym punkcie poprzez aplikację internetową.",
+      "point3": "Pierwsze 5 uczestników, którzy odwiedzą wszystkie lokalizacje, otrzymają jednorazową nagrodę w postaci biletu na koncert organizowany przez zespół.",
+      "point4": "Aplikacja informuje uczestnika o liczbie odwiedzonych lokalizacji.",
+      "point5": "Uczestnicy muszą odwiedzić lokalizacje osobiście i zeskanować tagi NFC za pomocą swojego urządzenia mobilnego.",
+      "point6": "Wszelkie próby oszukiwania, manipulacji systemem lub podawania fałszywych informacji skutkują natychmiastową dyskwalifikacją."
+    },
+
+    "section4": {
+      "title": "§4 Wymagania techniczne",
+      "point1": "Udział wymaga smartfona z aktywną funkcją NFC oraz dostępem do internetu.",
+      "point2": "Aplikacja obsługuje nowoczesne przeglądarki internetowe oraz urządzenia mobilne z funkcją NFC.",
+      "point3": "W przypadku problemów technicznych uczestnik może skontaktować się z organizatorem pod adresem e-mail podanym w §1."
+    },
+
+    "section5": {
+      "title": "§5 Bezpieczeństwo i odpowiedzialność",
+      "point1": "Uczestnik ponosi pełną odpowiedzialność za swoje bezpieczeństwo podczas gry oraz poruszania się po mieście.",
+      "point2": "Organizator nie ponosi odpowiedzialności za szkody powstałe podczas przemieszczania się lub uczestnictwa w Grze.",
+      "point3": "Uczestnicy zobowiązani są do przestrzegania przepisów ruchu drogowego oraz lokalnych przepisów prawa.",
+      "point4": "Uczestnicy powinni zachować ostrożność podczas odwiedzania lokalizacji, szczególnie w miejscach o dużym natężeniu ruchu lub w pobliżu jezdni."
+    },
+
+    "section6": {
+      "title": "§6 Nagrody",
+      "point1": "Nagrodą w Grze jest 1 bilet wstępu na koncert zespołu, którego data i miejsce zostaną ogłoszone na stronie internetowej lub w aplikacji.",
+      "point2": "Liczba nagród jest ograniczona – otrzymają je pierwsze 5 osób, które spełnią warunki określone w §3.",
+      "point3": "Nagroda nie podlega wymianie na ekwiwalent pieniężny ani na inne świadczenia.",
+      "point4": "Zwycięzcy zostaną poinformowani drogą mailową najpóźniej w ciągu 14 dni od ukończenia wszystkich lokalizacji.",
+      "point5": "W przypadku niemożności odbioru nagrody, zostanie ona przepadła. Nagroda musi być odebrana osobiście przez zwycięzcę."
+    },
+
+    "section7": {
+      "title": "§7 Reklamacje",
+      "point1": "Wszelkie uwagi i pytania dotyczące przebiegu Gry można kierować na adres e-mail: kontakt@oset-oktet.pl. Organizator rozpatruje zgłoszenia w ciągu 14 dni roboczych.",
+      "point2": "Decyzje Organizatora w zakresie reklamacji są ostateczne."
+    },
+
+    "section8": {
+      "title": "§8 Dane osobowe",
+      "point1": "Zasady przetwarzania danych osobowych określa Polityka Prywatności stanowiąca integralną część niniejszego Regulaminu.",
+      "point2": "Uczestnik wyraża zgodę na przetwarzanie danych osobowych w zakresie niezbędnym do realizacji Gry.",
+      "point3": "Dane lokalizacyjne zbierane podczas gry służą wyłącznie weryfikacji odwiedzonych lokalizacji i nie są udostępniane stronom trzecim."
+    },
+
+    "section9": {
+      "title": "§9 Postanowienia końcowe",
+      "point1": "Organizator zastrzega sobie prawo do zmiany niniejszego Regulaminu z ważnych powodów, w szczególności z powodu zmiany przepisów prawa lub zmiany terminu lub formuły Gry. O wszelkich zmianach uczestnicy zostaną poinformowani poprzez aplikację lub stronę internetową.",
+      "point2": "W sprawach nieuregulowanych Regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego.",
+      "point3": "Niniejszy Regulamin wchodzi w życie z dniem opublikowania w aplikacji i obowiązuje wszystkich uczestników, którzy zarejestrują się po tej dacie."
+    },
+
+    "effective_date": "Regulamin obowiązuje od dnia publikacji w aplikacji",
+    "contact_info": "Kontakt: kontakt@oset-oktet.pl"
+  },
+  "privacy": {
+    "title": "Polityka Prywatności",
+    "effective_date": "Polityka prywatności obowiązuje od dnia publikacji w aplikacji",
+    "contact_info": "Kontakt: kontakt@oset-oktet.pl",
+
+    "section1": {
+      "title": "Informacje ogólne",
+      "point1": "Administratorem danych osobowych uczestników gry miejskiej (dalej: „Gra\") jest zespół muzyczny „Oset\", reprezentowany przez Bartłomieja Leśniewskiego, adres e-mail: kontakt@oset-oktet.pl (dalej: „Administrator\").",
+      "point2": "Niniejsza Polityka określa zasady przetwarzania danych osobowych w związku z udziałem w Grze oraz korzystaniem z aplikacji internetowej służącej do rejestracji uczestnictwa."
+    },
+
+    "section2": {
+      "title": "Zakres przetwarzanych danych",
+      "intro": "Administrator przetwarza następujące dane:",
+      "data1": "adres e-mail uczestnika",
+      "data2": "dane geolokalizacyjne (jeśli użytkownik wyrazi na to zgodę)",
+      "data3": "dane techniczne (np. adres IP, czas skanowania tagów NFC)"
+    },
+
+    "section3": {
+      "title": "Cel i podstawa prawna przetwarzania danych",
+      "point1": {
+        "intro": "Dane są przetwarzane w celu:",
+        "purpose1": "umożliwienia udziału w Grze",
+        "purpose2": "kontaktu z uczestnikami (przekazanie nagrody)",
+        "purpose3": "zabezpieczenia przebiegu Gry przed nadużyciami",
+        "purpose4": "prowadzenia ewidencji zwycięzców"
+      },
+      "point2": {
+        "intro": "Podstawą prawną przetwarzania danych jest:",
+        "basis1": "art. 6 ust. 1 lit. a RODO – zgoda osoby, której dane dotyczą",
+        "basis2": "art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes Administratora (np. zapewnienie bezpieczeństwa i prawidłowości przebiegu Gry)"
+      }
+    },
+
+    "section4": {
+      "title": "Czas przechowywania danych",
+      "point1": "Dane osobowe uczestników będą przechowywane do 60 dni po zakończeniu Gry.",
+      "point2": "Po tym okresie dane zostaną usunięte lub zanonimizowane."
+    },
+
+    "section5": {
+      "title": "Przekazywanie danych",
+      "point1": "Dane mogą być powierzane dostawcom usług hostingowych, serwerowych lub IT w zakresie niezbędnym do obsługi aplikacji.",
+      "point2": "Dane nie będą przekazywane do państw spoza Europejskiego Obszaru Gospodarczego, chyba że dostawca zapewnia odpowiedni poziom ochrony (np. w ramach programu EU-US Data Privacy Framework)."
+    },
+
+    "section6": {
+      "title": "Prawa uczestnika",
+      "intro": "Uczestnikowi przysługuje:",
+      "right1": "prawo dostępu do swoich danych",
+      "right2": "prawo ich poprawienia lub usunięcia",
+      "right3": "prawo ograniczenia przetwarzania",
+      "right4": "prawo przeniesienia danych",
+      "right5": "prawo wycofania zgody w dowolnym momencie",
+      "right6": "prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych"
+    },
+
+    "section7": {
+      "title": "Dobrowolność podania danych",
+      "content": "Podanie danych osobowych jest dobrowolne, lecz niezbędne do wzięcia udziału w Grze i otrzymania ewentualnej nagrody."
+    },
+
+    "section8": {
+      "title": "Kontakt",
+      "content": "W sprawach dotyczących danych osobowych można kontaktować się z Administratorem poprzez e-mail: kontakt@oset-oktet.pl."
+    }
   }
 }

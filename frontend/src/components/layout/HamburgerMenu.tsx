@@ -97,6 +97,22 @@ export default function HamburgerMenu() {
                             {t('home')}
                         </Link>
 
+                        <Link
+                            to="/terms"
+                            className="text-sm hover:underline text-left"
+                            onClick={() => setOpen(false)}
+                        >
+                            {t('terms.title')}
+                        </Link>
+
+                        <Link
+                            to="/privacy"
+                            className="text-sm hover:underline text-left"
+                            onClick={() => setOpen(false)}
+                        >
+                            {t('privacy.title')}
+                        </Link>
+
                         {hasAdminRole() && (
                             <Link
                                 to="/admin"
