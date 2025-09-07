@@ -16,6 +16,7 @@ class TagAccessFactory {
 
     public static TagAccessResponseDto createTagAccessResponseDetailsDto(TagLocation tagLocation, boolean isUnlocked) {
         TagAccessResponseDto.TagAccessResponseDtoBuilder builder = TagAccessResponseDto.builder()
+                .tagLocationId(tagLocation.getId().toString())
                 .longitude(tagLocation.getLongitude())
                 .latitude(tagLocation.getLatitude())
                 .isUnlocked(isUnlocked)

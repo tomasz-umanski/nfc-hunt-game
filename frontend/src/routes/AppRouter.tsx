@@ -11,6 +11,8 @@ import AdminPage from "@/pages/AdminPage.tsx";
 import RoleBasedRoute from "@/routes/RoleBasedRoute.tsx";
 import UserManagement from "@/pages/UserManagement.tsx";
 import TagsManagement from "@/pages/TagsManagement.tsx";
+import TagUnlockPage from "@/pages/TagUnlockPage.tsx";
+import TagAccessDetailsPage from "@/pages/TagAccessDetailsPage.tsx";
 
 export default function AppRouter() {
     return (
@@ -19,6 +21,8 @@ export default function AppRouter() {
                 <Route path="/" element={<HomePage/>}/>
                 <Route path="/terms" element={<TermsPage/>}/>
                 <Route path="/privacy" element={<PrivacyPage/>}/>
+                <Route path="/tag-access/:uuid" element={<TagAccessDetailsPage/>}/>
+                <Route path="/unlock-tag-access/:uuid" element={<TagUnlockPage/>}/>
 
                 <Route element={<PublicRoute/>}>
                     <Route path="/login" element={<LoginPage/>}/>

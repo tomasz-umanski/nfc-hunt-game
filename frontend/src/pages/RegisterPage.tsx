@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {Trans, useTranslation} from 'react-i18next';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useSearchParams} from 'react-router-dom';
 import {useAuthStore} from '../store/authStore';
 import {registerRequest} from '@/api/auth/auth.ts';
 import toast from 'react-hot-toast';
@@ -36,6 +36,7 @@ export default function RegisterPage() {
 
     const login = useAuthStore((state) => state.login);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -49,8 +50,14 @@ export default function RegisterPage() {
                 const auth = await registerRequest(data);
                 login(auth);
 
-                const role = useAuthStore.getState().user?.role;
-                navigate(role === 'ADMIN' ? '/admin' : '/');
+                const redirectPath = searchParams.get('redirect');
+
+                // If there's a redirect path, use it; otherwise go to home
+                if (redirectPath) {
+                    navigate(redirectPath);
+                } else {
+                    navigate('/');
+                }
             })(),
             {
                 loading: t('register_loading'),
@@ -62,6 +69,12 @@ export default function RegisterPage() {
             }
         );
     };
+
+    // Construct login link with redirect parameter
+    const redirectPath = searchParams.get('redirect');
+    const loginLink = redirectPath
+        ? `/login?redirect=${encodeURIComponent(redirectPath)}`
+        : '/login';
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center p-4 bg-gray-100">
@@ -182,7 +195,7 @@ export default function RegisterPage() {
 
                 <p className="text-center text-sm mt-3">
                     {t('already_have_account')}{' '}
-                    <Link to="/login" className="text-blue-600 hover:underline">
+                    <Link to={loginLink} className="text-blue-600 hover:underline">
                         {t('login')}
                     </Link>
                 </p>

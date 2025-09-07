@@ -22,6 +22,7 @@ import pl.osetoctet.common.utils.OffsetDateTimeUtils;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
@@ -46,6 +47,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleCreationException(ValidationException ex, HttpServletRequest request) {
         ErrorResponse errorResponse = createErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RetrieveException.class)
+    public ResponseEntity<ErrorResponse> handleRetrieveException(RetrieveException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = createErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request);
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)
@@ -160,7 +167,19 @@ public class GlobalExceptionHandler {
                         ISO_8601_FORMAT
                 );
             }
-            return determineEnumErrorMessage(ex.getValue(), ex.getRequiredType(), ex.getName());
+
+            if (UUID.class.equals(ex.getRequiredType())) {
+                return String.format(
+                        "Invalid UUID format for parameter '%s'. Value '%s' is not a valid UUID. Expected format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.",
+                        ex.getName(),
+                        ex.getValue()
+                );
+            }
+
+            String enumErrorMessage = determineEnumErrorMessage(ex.getValue(), ex.getRequiredType(), ex.getName());
+            if (enumErrorMessage != null) {
+                return enumErrorMessage;
+            }
         }
         return String.format("Invalid value '%s' for parameter '%s'.", ex.getValue(), ex.getName());
     }

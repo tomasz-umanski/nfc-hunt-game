@@ -25,7 +25,7 @@ export default function HamburgerMenu() {
         if (!refreshToken) {
             logout();
             setOpen(false);
-            navigate('/');
+            navigate('/logout');
             return;
         }
 
@@ -42,14 +42,14 @@ export default function HamburgerMenu() {
             if (err?.response?.status === 401) {
                 logout();
                 setOpen(false);
-                navigate('/');
+                navigate('/logout');
                 return;
             }
         }
 
         logout();
         setOpen(false);
-        navigate('/');
+        navigate('/logout');
     };
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export default function HamburgerMenu() {
         <div className="fixed top-4 right-4 z-50">
             <div className="relative" ref={menuRef}>
                 <button
-                    className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center"
+                    className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center"
                     onClick={() => setOpen(!open)}
                     aria-label="Menu"
                 >

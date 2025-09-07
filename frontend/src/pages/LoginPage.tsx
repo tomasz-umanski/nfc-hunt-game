@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {useTranslation} from 'react-i18next';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useSearchParams} from 'react-router-dom';
 import {useAuthStore} from '../store/authStore';
 import {loginRequest} from '@/api/auth/auth.ts';
 import toast from 'react-hot-toast';
@@ -27,6 +27,7 @@ export default function LoginPage() {
 
     const login = useAuthStore((state) => state.login);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -39,7 +40,13 @@ export default function LoginPage() {
                 login(auth);
 
                 const role = useAuthStore.getState().user?.role;
-                navigate(role === 'ADMIN' ? '/admin' : '/');
+                const redirectPath = searchParams.get('redirect');
+
+                if (redirectPath && role !== 'ADMIN') {
+                    navigate(redirectPath);
+                } else {
+                    navigate(role === 'ADMIN' ? '/admin' : '/');
+                }
             })(),
             {
                 loading: t('login_loading'),
@@ -51,6 +58,11 @@ export default function LoginPage() {
             }
         );
     };
+
+    const redirectPath = searchParams.get('redirect');
+    const registerLink = redirectPath
+        ? `/register?redirect=${encodeURIComponent(redirectPath)}`
+        : '/register';
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center p-4 bg-gray-100">
@@ -104,7 +116,7 @@ export default function LoginPage() {
 
                 <p className="text-center text-sm mt-3">
                     {t('no_account')}{' '}
-                    <Link to="/register" className="text-blue-600 hover:underline">
+                    <Link to={registerLink} className="text-blue-600 hover:underline">
                         {t('register')}
                     </Link>
                 </p>

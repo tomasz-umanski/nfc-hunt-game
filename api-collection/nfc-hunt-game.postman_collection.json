@@ -849,6 +849,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Tag By Location Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-access/:tag_location_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"tag-access",
+								":tag_location_id"
+							],
+							"variable": [
+								{
+									"key": "tag_location_id",
+									"value": "{{tag_location_id}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"auth": {
@@ -984,6 +1017,69 @@
 									"key": "file_url",
 									"value": "{{file_url}}"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user's summary (admin)",
+			"item": [
+				{
+					"name": "Get user summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-location",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"tag-location"
 							]
 						}
 					},

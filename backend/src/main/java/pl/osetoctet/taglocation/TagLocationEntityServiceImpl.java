@@ -6,6 +6,7 @@ import pl.osetoctet.taglocation.model.entity.TagLocation;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +22,11 @@ class TagLocationEntityServiceImpl implements TagLocationEntityService {
     @Override
     public Optional<TagLocation> findByNfcTagId(String nfcTagId) {
         return tagLocationRepository.findByNfcTagUuid(nfcTagId);
+    }
+
+    @Override
+    public Optional<TagLocation> findById(UUID id) {
+        return tagLocationRepository.findById(id);
     }
 
 }

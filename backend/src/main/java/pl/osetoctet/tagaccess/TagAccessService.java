@@ -5,10 +5,13 @@ import pl.osetoctet.tagaccess.model.dto.UnlockTagRequestDto;
 import pl.osetoctet.user.model.entity.User;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TagAccessService {
 
     TagAccessResponseDto unlock(User user, UnlockTagRequestDto unlockTagRequestDto);
+
+    TagAccessResponseDto getByTagLocationId(UUID tagLocationId, User user);
 
     List<TagAccessResponseDto> getAllTagsForUser(User user);
 

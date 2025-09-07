@@ -128,7 +128,6 @@
   "terms": {
     "title": "Terms and Conditions",
     "subtitle": "City Game Terms and Conditions",
-
     "section1": {
       "title": "§1 General Provisions",
       "point1": "The organizer of the city game (hereinafter: \"Game\") is the musical group operating under the name \"Oset\", represented by Bartłomiej Leśniewski, email address: kontakt@oset-oktet.pl (hereinafter: \"Organizer\").",
@@ -136,14 +135,12 @@
       "point3": "The Game is promotional in nature and aims to encourage participants to take part in an artistic event organized by the group.",
       "point4": "Participation in the Game is voluntary and free of charge."
     },
-
     "section2": {
       "title": "§2 Participants",
       "point1": "Only natural persons who have reached the age of 16 on the day of starting participation can participate in the Game. Persons under 16 years of age may not participate in the Game.",
       "point2": "Participation requires registration in the web application and acceptance of these Terms and Conditions and Privacy Policy.",
       "point3": "Each participant may participate in the Game only once and may receive only one prize."
     },
-
     "section3": {
       "title": "§3 Game Rules",
       "point1": "The participant scans NFC tags placed in various locations throughout the city of Gdańsk. Each tag corresponds to one location.",
@@ -153,14 +150,12 @@
       "point5": "Participants must visit locations in person and scan NFC tags using their mobile device.",
       "point6": "Any attempts to cheat, manipulate the system, or provide false information will result in immediate disqualification."
     },
-
     "section4": {
       "title": "§4 Technical Requirements",
       "point1": "Participation requires a smartphone with active NFC function and internet access.",
       "point2": "The application supports modern web browsers and mobile devices with NFC capability.",
       "point3": "In case of technical problems, the participant may contact the organizer at the email address provided in §1."
     },
-
     "section5": {
       "title": "§5 Safety and Responsibility",
       "point1": "The participant bears full responsibility for their safety during the game and while moving around the city.",
@@ -168,7 +163,6 @@
       "point3": "Participants are obliged to comply with traffic regulations and local laws.",
       "point4": "Participants should exercise caution when visiting locations, especially in crowded areas or near traffic."
     },
-
     "section6": {
       "title": "§6 Prizes",
       "point1": "The prize in the Game is 1 admission ticket to the group's concert, the date and venue of which will be announced on the website or in the application.",
@@ -177,27 +171,23 @@
       "point4": "Winners will be notified by email no later than 14 days after completing all locations.",
       "point5": "In case of inability to collect the prize, it will be forfeited. The prize must be collected personally by the winner."
     },
-
     "section7": {
       "title": "§7 Complaints",
       "point1": "All comments and questions regarding the course of the Game can be directed to the email address: kontakt@oset-oktet.pl. The organizer considers submissions within 14 business days.",
       "point2": "The organizer's decisions regarding complaints are final."
     },
-
     "section8": {
       "title": "§8 Personal Data",
       "point1": "The principles of personal data processing are defined by the Privacy Policy, which is an integral part of these Terms and Conditions.",
       "point2": "The participant consents to the processing of personal data to the extent necessary for the implementation of the Game.",
       "point3": "Location data collected during the game is used solely for verification of visited locations and is not shared with third parties."
     },
-
     "section9": {
       "title": "§9 Final Provisions",
       "point1": "The organizer reserves the right to change these Terms and Conditions for important reasons, in particular due to changes in legal regulations or changes in the date or format of the Game. All participants will be informed of any changes through the application or website.",
       "point2": "In matters not regulated by the Terms and Conditions, the provisions of Polish law shall apply, in particular the Civil Code.",
       "point3": "These Terms and Conditions come into force on the day of publication in the application and apply to all participants who register after this date."
     },
-
     "effective_date": "Terms effective from the date of publication in the application",
     "contact_info": "Contact: kontakt@oset-oktet.pl"
   },
@@ -205,13 +195,11 @@
     "title": "Privacy Policy",
     "effective_date": "Privacy Policy effective from the date of publication in the application",
     "contact_info": "Contact: kontakt@oset-oktet.pl",
-
     "section1": {
       "title": "General Information",
       "point1": "The data controller for personal data of city game participants (hereinafter: \"Game\") is the musical group \"Oset\", represented by Bartłomiej Leśniewski, email address: kontakt@oset-oktet.pl (hereinafter: \"Controller\").",
       "point2": "This Privacy Policy defines the principles of personal data processing in connection with participation in the Game and use of the web application for registration."
     },
-
     "section2": {
       "title": "Scope of Data Processing",
       "intro": "The Controller processes the following data:",
@@ -219,7 +207,6 @@
       "data2": "geolocation data (if the user consents to it)",
       "data3": "technical data (e.g., IP address, NFC tag scanning time)"
     },
-
     "section3": {
       "title": "Purpose and Legal Basis of Data Processing",
       "point1": {
@@ -235,19 +222,16 @@
         "basis2": "Art. 6(1)(f) GDPR – legitimate interest of the Controller (e.g., ensuring security and proper conduct of the Game)"
       }
     },
-
     "section4": {
       "title": "Data Retention Period",
       "point1": "Personal data of participants will be stored for 60 days after the end of the Game.",
       "point2": "After this period, data will be deleted or anonymized."
     },
-
     "section5": {
       "title": "Data Sharing",
       "point1": "Data may be entrusted to hosting, server, or IT service providers to the extent necessary for application operation.",
       "point2": "Data will not be transferred to countries outside the European Economic Area, unless the provider ensures an adequate level of protection (e.g., under the EU-US Data Privacy Framework program)."
     },
-
     "section6": {
       "title": "Participant Rights",
       "intro": "The participant has the right to:",
@@ -258,15 +242,40 @@
       "right5": "withdraw consent at any time",
       "right6": "lodge a complaint with the President of the Personal Data Protection Office"
     },
-
     "section7": {
       "title": "Voluntary Data Provision",
       "content": "Providing personal data is voluntary, but necessary to participate in the Game and receive any potential prize."
     },
-
     "section8": {
       "title": "Contact",
       "content": "For matters concerning personal data, you can contact the Controller via email: kontakt@oset-oktet.pl."
     }
+  },
+  "days": "Days",
+  "hours": "Hours",
+  "minutes": "Minutes",
+  "seconds": "Seconds",
+  "buyTickets": "Buy tickets",
+  "tagAccessError": "Failed to load tag locations",
+  "tagUnlock": {
+    "title": "Unlock Tag",
+    "locationNotSupported": "Geolocation is not supported by this browser",
+    "locationError": "Unable to retrieve your location",
+    "locationDenied": "Location access denied. Please enable location permission and try again",
+    "locationUnavailable": "Location information is unavailable",
+    "locationTimeout": "Location request timed out",
+    "locationFound": "Location found",
+    "gettingLocation": "Getting location...",
+    "getLocation": "Get My Location",
+    "unlockTag": "Unlock Tag",
+    "retry": "Try Again",
+    "unlocking": "Unlocking Tag...",
+    "unlockingDescription": "Please wait while we unlock your tag",
+    "unlockFailed": "Failed to unlock tag. Please try again",
+    "success": "Tag Unlocked Successfully!",
+    "unlockImage": "Unlock image",
+    "viewAllTags": "View All Tags",
+    "authRequired": "Authentication Required",
+    "authRequiredDescription": "Please log in to unlock tags"
   }
 }

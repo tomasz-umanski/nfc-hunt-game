@@ -89,6 +89,25 @@ class TagAccessServiceImpl implements TagAccessService {
 
     @Override
     @Transactional(readOnly = true)
+    public TagAccessResponseDto getByTagLocationId(UUID tagLocationId, User user) {
+        try {
+            TagLocation tagLocation = tagLocationEntityService.findById(tagLocationId)
+                    .orElseThrow(() -> new ValidationException("validation.tagLocation.notFound"));
+
+            boolean isUnlocked = tagAccessRepository.existsByUserIdAndTagLocationId(user.getId(), tagLocationId);
+            return TagAccessFactory.createTagAccessResponseDetailsDto(tagLocation, isUnlocked);
+        } catch (ValidationException e) {
+            log.warn("Validation failed while retrieving tag {} for user {}: {}",
+                    tagLocationId, user.getId(), e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Failed to retrieve tag {} for user {}", tagLocationId, user.getId(), e);
+            throw new RetrieveException("Failed to retrieve tag", e);
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<TagAccessResponseDto> getAllTagsForUser(User user) {
         try {
             List<TagLocation> allTags = tagLocationEntityService.findAll();

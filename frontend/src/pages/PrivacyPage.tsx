@@ -5,7 +5,7 @@ export default function PrivacyPage() {
     const {t} = useTranslation();
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-primary-500">
             <HamburgerMenu/>
 
             <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -19,11 +19,11 @@ export default function PrivacyPage() {
                 </div>
 
                 {/* Privacy Content */}
-                <div className="bg-white rounded-lg shadow-sm border p-6 md:p-8 space-y-8">
+                <div className="bg-primary-500 rounded-lg shadow-sm border border-gray-800 p-6 md:p-8 space-y-8">
 
                     {/* Section 1: General Information */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section1.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
 
                     {/* Section 2: Scope of Data Processing */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section2.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
 
                     {/* Section 3: Purpose and Legal Basis */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section3.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
 
                     {/* Section 4: Data Retention */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section4.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
 
                     {/* Section 5: Data Sharing */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section5.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
 
                     {/* Section 6: User Rights */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section6.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
 
                     {/* Section 7: Voluntary Data Provision */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section7.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
 
                     {/* Section 8: Contact */}
                     <section>
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-800">
                             {t('privacy.section8.title')}
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="text-center mt-12 pt-8 border-t border-gray-200">
+                <div className="text-center mt-12 pt-8 border-t border-gray-800">
                     <p className="text-gray-500 font-medium mb-2">{t('privacy.effective_date')}</p>
                     <p className="text-gray-500">{t('privacy.contact_info')}</p>
                 </div>

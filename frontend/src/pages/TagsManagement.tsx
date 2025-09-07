@@ -613,7 +613,7 @@ const TagsManagement = () => {
                                                 <span className="flex items-center gap-1">
                                                     <MapPin size={14}/>
                                                     <span className="truncate">
-                                                        {tag.latitude.toFixed(4)}, {tag.longitude.toFixed(4)}
+                                                        {tag.latitude.toFixed(8)}, {tag.longitude.toFixed(8)}
                                                     </span>
                                                 </span>
                                                 <span className="flex items-center gap-1">
@@ -676,7 +676,7 @@ const TagsManagement = () => {
                                                         <span
                                                             className="font-semibold text-gray-700">{t('coordinates') || 'Coordinates'}:</span>
                                                     <p className="text-gray-600">
-                                                        {tag.latitude.toFixed(6)}, {tag.longitude.toFixed(6)}
+                                                        {tag.latitude.toFixed(8)}, {tag.longitude.toFixed(8)}
                                                         <button
                                                             onClick={() => window.open(`https://maps.google.com?q=${tag.latitude},${tag.longitude}`, '_blank')}
                                                             className="ml-2 text-blue-600 hover:text-blue-800"

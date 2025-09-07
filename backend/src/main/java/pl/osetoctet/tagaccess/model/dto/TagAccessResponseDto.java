@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 @Schema(description = "Data Transfer Object for tag access response")
 public class TagAccessResponseDto {
 
+    @Schema(description = "Unique identifier of the tag location", example = "123e4567-e89b-12d3-a456-426614174000")
+    private String tagLocationId;
+
     @Schema(description = "Latitude coordinate of the tag location", example = "51.12345678")
     private BigDecimal latitude;
 

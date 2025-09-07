@@ -173,7 +173,7 @@ export default function UserManagement() {
                                                         <li key={index} className="text-gray-700">
                                                             <p>
                                                                 <MapPin size={14} className="inline-block mr-1"/>
-                                                                {tag.latitude.toFixed(6)}, {tag.longitude.toFixed(6)}
+                                                                {tag.latitude.toFixed(8)}, {tag.longitude.toFixed(8)}
                                                                 <button
                                                                     onClick={() => window.open(`https://maps.google.com?q=${tag.latitude},${tag.longitude}`, '_blank')}
                                                                     className="ml-2 text-blue-600 hover:text-blue-800"
