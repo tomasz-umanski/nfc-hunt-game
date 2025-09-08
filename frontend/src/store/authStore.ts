@@ -42,6 +42,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
         set({user: null, accessToken: null, refreshToken: null});
+        if (typeof window !== 'undefined') {
+            const currentPath = window.location.pathname + window.location.search;
+            const encodedPath = encodeURIComponent(currentPath);
+            window.location.href = `/login?redirect=${encodedPath}`;
+        }
     },
 
     hydrate: async () => {

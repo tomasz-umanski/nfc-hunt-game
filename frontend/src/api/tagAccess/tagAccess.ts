@@ -4,9 +4,16 @@ import type {
     UnlockTagRequestDto
 } from "@/types/tagAccess";
 
+export const getAllTagsPublic = async (): Promise<TagAccessResponseDto[]> => {
+    const response = await apiClient.get<TagAccessResponseDto[]>(
+        '/v1/tag-access/public'
+    );
+    return response.data;
+};
+
 export const getAllTagsWithAccessRequest = async (): Promise<TagAccessResponseDto[]> => {
     const response = await apiClient.get<TagAccessResponseDto[]>(
-        '/v1/tag-access'
+        '/v1/tag-access/user'
     );
     return response.data;
 };

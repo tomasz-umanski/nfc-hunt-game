@@ -20,7 +20,6 @@ export default function TagAccessDetailsPage() {
     const [showAnimation, setShowAnimation] = useState(false);
 
     useEffect(() => {
-        debugger;
         if (!isAuthenticated()) {
             const currentPath = location.pathname;
             navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);

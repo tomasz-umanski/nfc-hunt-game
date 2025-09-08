@@ -126,17 +126,10 @@ export default function TagUnlockPage() {
                             disabled={isProcessing}
                             className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-300 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center"
                         >
-                            {isProcessing ? (
-                                <>
-                                    <Loader className="animate-spin h-5 w-5 mr-2"/>
-                                    {step === 'unlocking' ? t('tagUnlock.unlocking') : t('tagUnlock.gettingLocation')}
-                                </>
-                            ) : (
-                                <>
-                                    <Unlock className="h-5 w-5 mr-2"/>
-                                    {t('tagUnlock.unlockTag')}
-                                </>
-                            )}
+                            <>
+                                <Unlock className="h-5 w-5 mr-2"/>
+                                {t('tagUnlock.unlockTag')}
+                            </>
                         </button>
                     </div>
                 </div>

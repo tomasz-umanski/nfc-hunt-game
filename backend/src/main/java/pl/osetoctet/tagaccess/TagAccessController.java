@@ -105,8 +105,32 @@ class TagAccessController {
         return ResponseEntity.ok(tagAccessResponseDto);
     }
 
-    @Operation(operationId = "getAllTags", summary = "Get all tags with access-based information", tags = {"Tag access"},
-            description = "Retrieves all tags with detailed information for unlocked tags and limited information for locked tags.",
+    @Operation(operationId = "getAllTagsPublic", summary = "Get all tags (public access)", tags = {"Tag access"},
+            description = "Retrieves all tags with limited information for anonymous users.",
+            parameters = {
+                    @Parameter(
+                            name = "Accept-Language",
+                            description = "Preferred language for response messages and error descriptions. Supports standard language tags (e.g., en-US, pl-PL, fr-FR).",
+                            in = ParameterIn.HEADER,
+                            schema = @Schema(type = "string", example = "en-US")
+                    )
+            },
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Successfully retrieved tags",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = TagAccessResponseDto.class)
+                            ))
+            }
+    )
+    @GetMapping(value = "/public", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TagAccessResponseDto>> getAllTagsPublic() {
+        List<TagAccessResponseDto> tags = tagAccessService.getAllTags();
+        return ResponseEntity.ok(tags);
+    }
+
+    @Operation(operationId = "getAllTagsForUser", summary = "Get all tags for authenticated user", tags = {"Tag access"},
+            description = "Retrieves all tags with detailed information for unlocked tags and limited information for locked tags for authenticated users.",
             parameters = {
                     @Parameter(
                             name = "Accept-Language",
@@ -127,15 +151,9 @@ class TagAccessController {
                     ))
             }
     )
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TagAccessResponseDto>> getAllTags(@AuthenticationPrincipal User user) {
-        List<TagAccessResponseDto> tags;
-        if (user == null) {
-            tags = tagAccessService.getAllTags();
-        } else {
-            tags = tagAccessService.getAllTagsForUser(user);
-        }
+    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TagAccessResponseDto>> getAllTagsForUser(@AuthenticationPrincipal User user) {
+        List<TagAccessResponseDto> tags = tagAccessService.getAllTagsForUser(user);
         return ResponseEntity.ok(tags);
     }
-
 }

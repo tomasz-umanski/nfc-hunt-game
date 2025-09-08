@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
 import type {TagAccessResponseDto} from '@/types/tagAccess';
-import {getAllTagsWithAccessRequest} from "@/api/tagAccess/tagAccess.ts";
+import {getAllTagsPublic, getAllTagsWithAccessRequest} from "@/api/tagAccess/tagAccess.ts";
 import {getImageUrl} from "@/api/upload/upload.ts";
 import {isAuthenticated} from "@/utils/authUtils.ts";
 import toast from "react-hot-toast";
@@ -18,7 +18,12 @@ export default function TagAccessCards() {
             hasFetched.current = true;
 
             try {
-                const data = await getAllTagsWithAccessRequest();
+                let data;
+                if (isAuthenticated()) {
+                    data = await getAllTagsWithAccessRequest();
+                } else {
+                    data = await getAllTagsPublic();
+                }
                 setTags(data);
             } catch (err: any) {
                 const apiMessage = err?.response?.data?.error;

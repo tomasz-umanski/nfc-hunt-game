@@ -825,7 +825,37 @@
 					"response": []
 				},
 				{
-					"name": "Get All Tag Locations",
+					"name": "Get All Tag Locations Public",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "{{accept_language}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-access/public",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"tag-access",
+								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tag Locations User",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -836,7 +866,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}:{{port}}/api/v1/tag-access",
+							"raw": "{{base_url}}:{{port}}/api/v1/tag-access/user",
 							"host": [
 								"{{base_url}}"
 							],
@@ -844,7 +874,8 @@
 							"path": [
 								"api",
 								"v1",
-								"tag-access"
+								"tag-access",
+								"user"
 							]
 						}
 					},
